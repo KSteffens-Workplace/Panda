@@ -44,17 +44,26 @@ class PandaApi
         );
     }
 
-    public function marketTicker() {
+    public function marketTicker($currency) {
         $request = $this->client->request(
             'GET',
-            "market-ticker",
+            "market-ticker/$currency",
             $this->header
         );
         $body = json_decode($request->getBody()->read($request->getHeader('Content-Length')[0]));
-        return $body[6];
-        return json_encode($request->getBody()->read($request->getHeader('Content-Length')[0]));
-//        return json_decode($request->getBody()->read($request->getHeader('Content-Length')[0]));
-//        return $request->getHeader('Content-Length')[0];
+        return $body;
+
+    }
+
+ public function priceTicks($currency) {
+        $request = $this->client->request(
+            'GET',
+            "price-ticks/$currency",
+            $this->header
+        );
+        $body = json_decode($request->getBody()->read($request->getHeader('Content-Length')[0]));
+        return $body;
+
     }
 
 

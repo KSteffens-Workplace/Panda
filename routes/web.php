@@ -27,5 +27,5 @@ $router->get('/status', function () {
 
 $router->get('/amount', [
     'as'   => 'index',
-    'uses' => 'InfoController@amount'
+    'uses' => 'InfoController@testsql'
 ]);
