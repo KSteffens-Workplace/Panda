@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
+use App\Http\Controllers\InfoController;
 
 class Kernel extends ConsoleKernel
 {
@@ -25,5 +26,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         //
+        $schedule->command(error_log('Hallo welt: ' . date("H:i:s")))->everyMinute();
+        $schedule->command(
+            'InfoController:testsql1'
+        )->everyMinute();
     }
 }

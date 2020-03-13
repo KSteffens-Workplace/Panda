@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
 
 class PandaApi
 {
@@ -25,7 +24,9 @@ class PandaApi
         $this->key = env('PANDA_KEY');
         $this->header = ['headers' =>
             [
-                'Authorization' => "Bearer {$this->key}"
+                'Authorization' => "Bearer {$this->key}",
+                'content-type' => 'application/json',
+                'Accept' => 'application/json'
             ]
         ];
     }
@@ -44,7 +45,8 @@ class PandaApi
         );
     }
 
-    public function marketTicker($currency) {
+    public function marketTicker($currency)
+    {
         $request = $this->client->request(
             'GET',
             "market-ticker/$currency",
@@ -55,7 +57,8 @@ class PandaApi
 
     }
 
- public function priceTicks($currency) {
+    public function priceTicks($currency)
+    {
         $request = $this->client->request(
             'GET',
             "price-ticks/$currency",

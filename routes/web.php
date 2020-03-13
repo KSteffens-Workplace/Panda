@@ -20,12 +20,12 @@ $router->get('/status', function () {
     return 'Hallo Welt2';
 });
 
-//$router->get('/amount', [
-//    'as' => 'index',
-//    'uses' => 'infoController@amount'
-//])
-
 $router->get('/amount', [
-    'as'   => 'index',
-    'uses' => 'InfoController@testsql'
+    'as' => 'index',
+    'uses' => 'infoController@amount'
 ]);
+
+//$router->get('/amount', [
+//    'as'   => 'index',
+//    'uses' => 'InfoController@testsql'
+//]);
